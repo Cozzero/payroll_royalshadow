@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from core.payroll.models import userProfile, SalaryRecord, AttendanceRecord
+from payroll.models import userProfile, SalaryRecord, AttendanceRecord
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
