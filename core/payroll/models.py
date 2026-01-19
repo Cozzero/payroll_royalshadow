@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class userProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     #name = models.CharField(max_length=100)
-    employee_id = models.CharField(max_length=20, unique=True)
+    employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
     phone_number = models.CharField(max_length=15)
     passport_number = models.CharField(max_length=20, blank=False, null=False, default='enter passport no')
     visa_type = models.CharField(max_length=100, blank=False, null=False, default='Packer', choices=[
