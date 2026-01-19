@@ -1,9 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import action
-
- 
-
 from rest_framework import viewsets
+from rest_framework import status
+
 
 from .models import userProfile, SalaryRecord, AttendanceRecord
 from .serializers import UserProfileSerializer, SalaryRecordSerializer, AttendanceRecordSerializer
@@ -18,10 +17,3 @@ class AttendanceRecordViewSet(viewsets.ModelViewSet):
     queryset = AttendanceRecord.objects.all()
     serializer_class = AttendanceRecordSerializer
 
-# from rest_framework.views import APIView
-# from rest_framework.response import Response
-
-# @APIView(['GET'])
-# class test_api(APIView):
-#     def test_api(request):
-#         return Response({"status": "Payroll API is working!"})
