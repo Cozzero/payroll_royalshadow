@@ -1,16 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 class userProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    #name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
     phone_number = models.CharField(max_length=15)
     passport_number = models.CharField(max_length=20, blank=False, null=False, default='enter passport no')
     visa_type = models.CharField(max_length=100, blank=False, null=False, default='Packer', choices=[
         ('Packer', 'Packer'),
         ('Security', 'Security'),
-        ('Manager', 'Manager'),
+        ('Telecommunication Assistant', 'Telecommunication Assistant'),
     ])
 
     def __str__(self):
@@ -18,7 +19,8 @@ class userProfile(models.Model):
     
 class SalaryRecord(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    #name = models.CharField(max_length=100, default='Employee Name')
+    name = models.CharField(max_length=100, default='Employee Name')
+    employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
     basic_salary = models.DecimalField(max_digits=10, decimal_places=2)
     allowances = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     deductions = models.DecimalField(max_digits=10, decimal_places=2, default=0)
@@ -30,7 +32,8 @@ class SalaryRecord(models.Model):
     
 class AttendanceRecord(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    #name = models.CharField(max_length=100, default='Employee Name')
+    name = models.CharField(max_length=100, default='Employee Name')
+    employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
     date = models.DateField()
     check_in = models.TimeField()
     check_out = models.TimeField()
@@ -39,8 +42,9 @@ class AttendanceRecord(models.Model):
         return f"Attendance for {self.user.username} on {self.date}"
     
 class payroll(models.Model):
-        employee = models.ForeignKey(userProfile, on_delete=models.CASCADE)
-        #name = models.CharField(max_length=100, default='Employee Name')
+        user = models.ForeignKey(User, on_delete=models.CASCADE)
+        name = models.CharField(max_length=100, default='Employee Name')
+        employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
         month = models.CharField(max_length=20)
         total_present_days = models.IntegerField()
         net_salary = models.DecimalField(max_digits=10, decimal_places=2)
