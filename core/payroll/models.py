@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 class userProfile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, default='Employee Name')
     employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
     phone_number = models.CharField(max_length=15)
     passport_number = models.CharField(max_length=20, blank=False, null=False, default='enter passport no')
@@ -18,7 +18,7 @@ class userProfile(models.Model):
             return f"{self.user.username} Profile"
     
 class SalaryRecord(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, default='Employee Name')
     employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
     basic_salary = models.DecimalField(max_digits=10, decimal_places=2)
@@ -31,7 +31,7 @@ class SalaryRecord(models.Model):
         return f"Salary Record for {self.user.username} on {self.pay_date}"
     
 class AttendanceRecord(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, default='Employee Name')
     employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
     date = models.DateField()
@@ -42,7 +42,7 @@ class AttendanceRecord(models.Model):
         return f"Attendance for {self.user.username} on {self.date}"
     
 class payroll(models.Model):
-        user = models.ForeignKey(User, on_delete=models.CASCADE)
+        user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
         name = models.CharField(max_length=100, default='Employee Name')
         employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
         month = models.CharField(max_length=20)

@@ -58,3 +58,17 @@ urlpatterns = [
 #     path('', include(router.urls)),
 #     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 # ]
+
+INSTALLED_APPS = [
+    # ... other installed apps
+    'rest_framework_simplejwt',
+]
+
+# ... other settings
+
+REST_FRAMEWORK = {
+    # ... other REST framework settings
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
