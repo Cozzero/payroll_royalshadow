@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from rest_framework.urls import urlpatterns
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -59,16 +61,3 @@ urlpatterns = [
 #     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 # ]
 
-INSTALLED_APPS = [
-    # ... other installed apps
-    'rest_framework_simplejwt',
-]
-
-# ... other settings
-
-REST_FRAMEWORK = {
-    # ... other REST framework settings
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-}

@@ -13,10 +13,12 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name='userprofile',
             name='address',
+            field=models.CharField(max_length=255, null=True, blank=True),
         ),
         migrations.RemoveField(
             model_name='userprofile',
             name='department',
+            field=models.CharField(max_length=100, null=True, blank=True),
         ),
         migrations.AddField(
             model_name='userprofile',
@@ -26,6 +28,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='userprofile',
             name='visa_type',
-            field=models.CharField(choices=[('Packer', 'Packer'), ('Security', 'Security'), ('Manager', 'Manager')], default='Packer', max_length=100),
+            field=models.CharField(choices=[('Packer', 'Packer'), ('Security', 'Security'), ('Telecommunication Assistant', 'Telecommunication Assistant')], default='Packer', max_length=100),
         ),
+        migrations.AddField(
+            model_name='userprofile',
+            name='passport_number',
+            field=models.CharField(default='enter passport no', max_length=20),
+        ),
+
     ]
