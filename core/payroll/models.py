@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.conf import settings
+import django.db.models.deletion
+from django.db import migrations, models
 
 class userProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -42,13 +45,14 @@ class AttendanceRecord(models.Model):
         return f"Attendance for {self.user.username} on {self.date}"
     
 class payroll(models.Model):
-        user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
-        name = models.CharField(max_length=100, default='Employee Name')
-        employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
-        month = models.CharField(max_length=20)
-        total_present_days = models.IntegerField()
-        net_salary = models.DecimalField(max_digits=10, decimal_places=2)
-        generated_on = models.DateTimeField(auto_now_add=True)
-        def __str__(self):
-            return f"Payroll for {self.employee.user.username} - {self.month}"
-        
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
+    name = models.CharField(max_length=100, default='Employee Name')
+    employee_id = models.CharField(max_length=20, unique=True, blank=False, null=False, default='enter employee id')
+    month = models.CharField(max_length=20)
+    total_present_days = models.IntegerField()
+    net_salary = models.DecimalField(max_digits=10, decimal_places=2)
+    generated_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Payroll for {self.employee.user.username} - {self.month}"
+

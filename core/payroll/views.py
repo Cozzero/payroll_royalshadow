@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
@@ -5,10 +6,19 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from payroll.services.payroll_services import generate_salary
-from payroll.models import SalaryRecord
 from django.contrib.auth.models import User
 from .models import userProfile, SalaryRecord, AttendanceRecord, payroll
 from .serializers import UserProfileSerializer, SalaryRecordSerializer, AttendanceRecordSerializer, PayrollSerializer
+
+
+def home(request):
+    return render(request, 'home.html')
+def contact(request):
+    return render(request, 'contact.html')
+def services(request):
+    return render(request, 'services.html')
+
+
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
@@ -48,3 +58,5 @@ class GeneratePayrollView(APIView):
         }
         )
     
+
+

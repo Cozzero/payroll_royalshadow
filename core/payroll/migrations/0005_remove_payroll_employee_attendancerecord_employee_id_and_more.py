@@ -79,3 +79,4 @@ class Migration(migrations.Migration):
             field=models.CharField(choices=[('Packer', 'Packer'), ('Security', 'Security'), ('Telecommunication Assistant', 'Telecommunication Assistant')], default='Packer', max_length=100),
         ),
     ]
+    

@@ -1,6 +1,6 @@
 from calendar import monthrange
 from decimal import Decimal
-from payroll.models import AttendanceRecord, SalaryRecord, userProfile
+from payroll.models import AttendanceRecord, SalaryRecord, userProfile, payroll
 
 
 # def month_days(year, month):
@@ -59,7 +59,7 @@ def generate_salary(user, year, month):
 
     basic_salary = Decimal('3000.00')  # Example fixed basic salary
     allowances = Decimal('500.00')      # Example fixed allowances
-    deductions = Decimal('200.00')      # Example fixed deductions
+    deductions = Decimal('200.00')      # later can be dynamic
 
     # Calculate net salary based on attendance
     daily_salary = basic_salary / Decimal(total_days)
@@ -88,4 +88,16 @@ def generate_salary(user, year, month):
         salary_record.pay_date = f"{year}-{month}-25"
         salary_record.save()
 
-    return salary_record
+
+    if created:
+        # Create payroll record
+        payroll.objects.create(
+            user=user,
+            name=profile.name,
+            employee_id=profile.employee_id,
+            month=f"{year}-{month}",
+            total_present_days=present_days,
+            net_salary=net_salary
+        )
+
+        return salary_record.present_days, salary_record.net_salary
