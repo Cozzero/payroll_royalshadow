@@ -9,7 +9,8 @@ from payroll.services.payroll_services import generate_salary
 from django.contrib.auth.models import User
 from .models import userProfile, SalaryRecord, AttendanceRecord, payroll
 from .serializers import UserProfileSerializer, SalaryRecordSerializer, AttendanceRecordSerializer, PayrollSerializer
-
+from django.http import JsonResponse
+# from .templates import home, contact, services
 
 def home(request):
     return render(request, 'home.html')
@@ -17,8 +18,6 @@ def contact(request):
     return render(request, 'contact.html')
 def services(request):
     return render(request, 'services.html')
-
-
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):

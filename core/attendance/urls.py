@@ -1,5 +1,5 @@
 from rest_framework.routers import DefaultRouter
-from .views import AttendanceRecordViewSet
+from attendance.views import AttendanceRecordViewSet
 
 routers = DefaultRouter()
 routers.register(r'attendancerecords', AttendanceRecordViewSet, basename='AttendanceRecord')
