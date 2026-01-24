@@ -1,15 +1,14 @@
 from django.shortcuts import render
 from rest_framework.response import Response
-from rest_framework.decorators import action
 from rest_framework import viewsets
-from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
-from payroll.services.payroll_services import generate_salary
+from services.payroll_services import generate_salary
 from django.contrib.auth.models import User
-from .models import userProfile, SalaryRecord, AttendanceRecord, payroll
-from .serializers import UserProfileSerializer, SalaryRecordSerializer, AttendanceRecordSerializer, PayrollSerializer
-from django.http import JsonResponse
+from .models import payroll
+from .serializers import PayrollSerializer
+from salary.models import SalaryRecord
+#from django.http import JsonResponse
 # from .templates import home, contact, services
 
 def home(request):
@@ -20,15 +19,15 @@ def services(request):
     return render(request, 'services.html')
 
 
-class UserProfileViewSet(viewsets.ModelViewSet):
-    queryset = userProfile.objects.all()
-    serializer_class = UserProfileSerializer
-class SalaryRecordViewSet(viewsets.ModelViewSet):
-    queryset = SalaryRecord.objects.all()
-    serializer_class = SalaryRecordSerializer
-class AttendanceRecordViewSet(viewsets.ModelViewSet):
-    queryset = AttendanceRecord.objects.all()
-    serializer_class = AttendanceRecordSerializer
+# class UserProfileViewSet(viewsets.ModelViewSet):
+#     queryset = userProfile.objects.all()
+#     serializer_class = UserProfileSerializer
+# class SalaryRecordViewSet(viewsets.ModelViewSet):
+#     queryset = SalaryRecord.objects.all()
+#     serializer_class = SalaryRecordSerializer
+# class AttendanceRecordViewSet(viewsets.ModelViewSet):
+#     queryset = AttendanceRecord.objects.all()
+#     serializer_class = AttendanceRecordSerializer
 class PayrollViewSet(viewsets.ModelViewSet):
     queryset = payroll.objects.all()
     serializer_class = PayrollSerializer

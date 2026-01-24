@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from payroll.views import UserProfileViewSet, SalaryRecordViewSet, AttendanceRecordViewSet, PayrollViewSet
+from payroll.views import PayrollViewSet
 from payroll.views import GeneratePayrollView
 from payroll.views import home, contact, services
 
@@ -14,9 +14,9 @@ urlpatterns = [
 
 
 router = DefaultRouter()
-router.register(r'userprofiles', UserProfileViewSet, basename='userProfile')
-router.register(r'salaryrecords', SalaryRecordViewSet, basename='SalaryRecord')
-router.register(r'attendancerecords', AttendanceRecordViewSet, basename='AttendanceRecord')
+#router.register(r'userprofiles', UserProfileViewSet, basename='userProfile')
+#router.register(r'salaryrecords', SalaryRecordViewSet, basename='SalaryRecord')
+#router.register(r'attendancerecords', AttendanceRecordViewSet, basename='AttendanceRecord')
 router.register(r'payroll', PayrollViewSet, basename='payroll')
 urlpatterns = [
     path('', include(router.urls)),

@@ -8,13 +8,13 @@ class userProfile(models.Model):
     name = models.CharField(max_length=100)
     employee_id = models.CharField(max_length=50, unique=True)
     department = models.CharField(choices=[
-        ('Warehouse Helpers = Warehouse Helpers'),
-        ('Security Guard = Security Guard'),
+        ('Warehouse Helpers, Warehouse Helpers'),
+        ('Security Guard, Security Guard'),
     ])
     visa_category = models.CharField(choices=[
-        ('Packers = Packers')
-        ('Security = Security'),
-        ('Team = Team'),
+        ('Packers, Packers'),
+        ('Security, Security'),
+        ('Team, Team'),
     ])
     passport_no = models.CharField(max_length=100)
 
