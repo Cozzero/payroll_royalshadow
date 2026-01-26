@@ -13,12 +13,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('attendance.urls')),
+    path('api/', include('salary.urls')),
     path('api/', include('payroll.urls')),
-    path('api/attendance/', include('attendance.urls')),
-    path('', include('attendance.urls')),
-    path('', include('payroll.urls')),
-    path('', include('userprofile.urls')),
-    path('', include('salary.urls')),
+    path('api/', include('userprofile.urls')),
     path('api/auth/', include('rest_framework.urls')),
     # path('api/', include('payroll.urls')),
     # path('api/attendance/', include('attendance.urls')),
