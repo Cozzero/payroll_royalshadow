@@ -7,7 +7,7 @@ from services.payroll_services import generate_salary
 from django.contrib.auth.models import User
 from .models import payroll
 from .serializers import PayrollSerializer
-from salary.models import SalaryRecord
+from salary.models import salaryRecord
 #from django.http import JsonResponse
 # from .templates import home, contact, services
 
@@ -42,7 +42,7 @@ class GeneratePayrollView(APIView):
             request.data.get('year'),
             request.data.get('month')
         )
-        SalaryRecord.objects.create(
+        salaryRecord.objects.create(
             user=user, 
             month=f"{request.data.get('year')}-{request.data.get('month')}-01",
             present_days=present_days,

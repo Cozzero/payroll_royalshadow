@@ -2,7 +2,7 @@ from calendar import monthrange
 from decimal import Decimal
 from userprofile.models import userProfile
 from attendance.models import AttendanceRecord
-from salary.models import SalaryRecord
+from salary.models import salaryRecord
 from payroll.models import payroll
 
 def generate_salary(user, year, month):
@@ -29,7 +29,7 @@ def generate_salary(user, year, month):
     salary_for_present_days = daily_salary * Decimal(present_days)
     net_salary = salary_for_present_days + allowances - deductions
 
-    salary_record, created = SalaryRecord.objects.get_or_create(
+    salary_record, created = salaryRecord.objects.get_or_create(
         user=user,
         name=profile.name,
         employee_id=profile.employee_id,

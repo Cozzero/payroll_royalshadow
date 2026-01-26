@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import SalaryRecord
-class SalaryRecordSerializer(serializers.ModelSerializer):
+from .models import salaryRecord
+class salaryRecordSerializer(serializers.ModelSerializer):
     class Meta:
-        model = SalaryRecord
+        model = salaryRecord
         fields = '__all__'

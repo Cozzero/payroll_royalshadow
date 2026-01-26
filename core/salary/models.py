@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-class SalaryRecord(models.Model):
+class salaryRecord(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='salary_records')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField()
