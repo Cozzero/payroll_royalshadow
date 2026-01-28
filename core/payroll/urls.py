@@ -1,14 +1,15 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 from payroll.views import PayrollViewSet
-from payroll.views import GeneratePayrollView
+from .generatedpayroll import GeneratePayrollView
 
 
 router = DefaultRouter()
-
 router.register(r'payroll', PayrollViewSet, basename='payroll')
-urlpatterns = router.urls
+
 
 urlpatterns = [
-    path('core/payroll/services/payroll_services', GeneratePayrollView.as_view(), name='generate-payroll'),
+    path('core/services/payroll_services', GeneratePayrollView.as_view(), name='generatedpayroll'),
 ]
+
+urlpatterns = router.urls

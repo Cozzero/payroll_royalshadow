@@ -19,6 +19,6 @@ class userProfile(models.Model):
 
 
     class Meta:
-        unique_together = ['user', 'name', 'employee_id', 'visa_category', 'passport_no']
+        unique_together = ['name', 'department', 'employee_id', 'visa_category', 'passport_no']
     def __str__(self):
-        return f"{self.user.username} - {self.employee_id} - {self.visa_category} - {self.passport_no}"
+        return f"{self.user.username} - {self.name} - {self.employee_id} - {self.visa_category} - {self.passport_no}"
