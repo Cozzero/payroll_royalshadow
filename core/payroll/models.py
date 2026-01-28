@@ -12,7 +12,7 @@ class payroll(models.Model):
 
 
 class Meta:
-        unique_together = ['employee_id', 'name', 'amount', 'date']
+        unique_together = ['name','employee_id', 'amount', 'date']
 def __str__(self):
-        return f"Payroll for {self.user.username} - {self.employee_id} - {self.name} - {self.month} - {self.amount}"
+        return f"Payroll for {self.user.username} -  {self.name} - {self.employee_id} - {self.month} - {self.amount}"
 

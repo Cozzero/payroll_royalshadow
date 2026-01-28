@@ -1,17 +1,20 @@
 from django.shortcuts import render
-# from rest_framework.response import Response
-from rest_framework import viewsets
-# from rest_framework.permissions import IsAuthenticated
-# from rest_framework.views import APIView
-# from django.contrib.auth.models import User
 from .models import payroll
 from .serializers import PayrollSerializer
-#from .generatedsalary import generate_salary
-# from salary.models import salaryRecord
+from rest_framework import viewsets
 
 class PayrollViewSet(viewsets.ModelViewSet):
     queryset = payroll.objects.select_related('employee').all()
     serializer_class = PayrollSerializer
+
+# from rest_framework.permissions import IsAuthenticated
+# from rest_framework.views import APIView
+# from django.contrib.auth.models import User
+# from rest_framework.response import Response
+# from .generatedsalary import generate_salary
+# from salary.models import salaryRecord
+
+
 
 # class GeneratePayrollView(APIView):
 #     permission_classes = [IsAuthenticated]
