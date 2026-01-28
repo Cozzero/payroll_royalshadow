@@ -2,9 +2,10 @@ from django.contrib import admin
 from .models import payroll
 from django.contrib.auth.models import User
 
-# admin.site.register(userProfile)
-# admin.site.register(SalaryRecord)
-# admin.site.register(AttendanceRecord)
-admin.site.register(payroll)
-admin.site.unregister(User)
+@admin.register(payroll)
 
+
+class payrollAdmin(admin.ModelAdmin):
+    list_display = ('user', 'name', 'employee_id', 'amount', 'generated_on', 'month')
+    search_fields = ('name', 'employee_id', 'generate_on')
+    list_filter = ['month']

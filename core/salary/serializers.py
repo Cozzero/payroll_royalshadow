@@ -3,4 +3,4 @@ from .models import salaryRecord
 class salaryRecordSerializer(serializers.ModelSerializer):
     class Meta:
         model = salaryRecord
-        fields = '__all__'
+        fields = ['__all__']

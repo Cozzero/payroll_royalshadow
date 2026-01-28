@@ -6,10 +6,6 @@ from salary.models import salaryRecord
 from payroll.models import payroll
 
 def generate_salary(user, year, month):
-    """
-    Generate salary for a user for a specific month and year.
-    """
-
     profile = userProfile.objects.get(user=user)
     attendance_records = AttendanceRecord.objects.filter(
         user=user,

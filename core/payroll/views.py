@@ -8,39 +8,21 @@ from django.contrib.auth.models import User
 from .models import payroll
 from .serializers import PayrollSerializer
 from salary.models import salaryRecord
-#from django.http import JsonResponse
-# from .templates import home, contact, services
 
-def home(request):
-    return render(request, 'home.html')
-def contact(request):
-    return render(request, 'contact.html')
-def services(request):
-    return render(request, 'services.html')
-
-
-# class UserProfileViewSet(viewsets.ModelViewSet):
-#     queryset = userProfile.objects.all()
-#     serializer_class = UserProfileSerializer
-# class SalaryRecordViewSet(viewsets.ModelViewSet):
-#     queryset = SalaryRecord.objects.all()
-#     serializer_class = SalaryRecordSerializer
-# class AttendanceRecordViewSet(viewsets.ModelViewSet):
-#     queryset = AttendanceRecord.objects.all()
-#     serializer_class = AttendanceRecordSerializer
 class PayrollViewSet(viewsets.ModelViewSet):
-    queryset = payroll.objects.all()
+    queryset = payroll.objects.select_related('employee').all()
     serializer_class = PayrollSerializer
 
 class GeneratePayrollView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        user = User.objects.get(id=request.data.get('user_id'))
+        user = User.objects.get(id=request.data.get('employee_id'))
         present_days, net_salary = generate_salary(
-            user,
+            request.data.get('user'),
             request.data.get('year'),
-            request.data.get('month')
+            request.data.get('month'),
+
         )
         salaryRecord.objects.create(
             user=user, 

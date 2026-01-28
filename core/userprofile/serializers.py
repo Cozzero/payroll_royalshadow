@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import userProfile
-class UserProfileSerializer(serializers.ModelSerializer):
+class userProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = userProfile
-        fields = '__all__'
+        fields = ['__all__']

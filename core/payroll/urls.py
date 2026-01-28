@@ -1,8 +1,7 @@
-from django.urls import path, include
+from django.urls import path
 from rest_framework.routers import DefaultRouter
 from payroll.views import PayrollViewSet
 from payroll.views import GeneratePayrollView
-from payroll.views import home, contact, services
 
 
 router = DefaultRouter()

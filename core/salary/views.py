@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from .models import salaryRecord
 from .serializers import salaryRecordSerializer
 class salaryRecordViewSet(viewsets.ModelViewSet):
-    queryset = salaryRecord.objects.all()
+    queryset = salaryRecord.objects.select_related('employee').all()
     serializer_class = salaryRecordSerializer
 
 

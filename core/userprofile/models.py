@@ -1,12 +1,11 @@
 from django.db import models
-
-# Create your models here.
 from django.contrib.auth.models import User
-class userProfile(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+class userProfile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    employee_id = models.CharField(max_length=50, unique=True)
+    employee_id = models.CharField(max_length=20, blank=False, null=False, default='enter employee id')
     department = models.CharField(choices=[
         ('Warehouse Helpers', 'Warehouse Helpers'),
         ('Security Guard', 'Security Guard'),
@@ -18,14 +17,8 @@ class userProfile(models.Model):
     ])
     passport_no = models.CharField(max_length=100)
 
+
+    class Meta:
+        unique_together = ['user', 'name', 'employee_id', 'visa_category', 'passport_no']
     def __str__(self):
-        return self.name
-    def get_full_profile(self):
-        return {
-            "name": self.name,
-            "employee_id": self.employee_id,
-            "department": self.department,
-            "visa_category": self.visa_category,
-            "passport_no": self.passport_no,
-            
-        }
+        return f"{self.user.username} - {self.employee_id} - {self.visa_category} - {self.passport_no}"
