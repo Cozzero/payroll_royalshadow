@@ -1,5 +1,5 @@
 from rest_framework.routers import DefaultRouter
-from payroll.views import PayrollViewSet
+from .views import PayrollViewSet
 # from .generatedpayroll import GeneratePayrollView
 
 routers = DefaultRouter()
