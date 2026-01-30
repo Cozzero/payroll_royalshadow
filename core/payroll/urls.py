@@ -2,10 +2,9 @@ from rest_framework.routers import DefaultRouter
 from payroll.views import PayrollViewSet
 # from .generatedpayroll import GeneratePayrollView
 
-
-router = DefaultRouter()
-router.register(r'payroll', PayrollViewSet, basename='payroll')
-urlpatterns = router.urls
+routers = DefaultRouter()
+routers.register(r'payroll', PayrollViewSet, basename='payroll')
+urlpatterns = routers.urls
 
 
 # urlpatterns = [

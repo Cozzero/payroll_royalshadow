@@ -18,7 +18,5 @@ urlpatterns = [
     path('api/', include('payroll.urls')),
     path('api/', include('userprofile.urls')),
     path('api/auth/', include('rest_framework.urls')),
- 
-    
 ]
 

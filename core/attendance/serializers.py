@@ -5,4 +5,6 @@ class AttendanceRecordSerializer(serializers.ModelSerializer):
     employee_name = serializers.ReadOnlyField(source='employee.username', read_only=True)
     class Meta:
         model = AttendanceRecord
-        fields = ['__all__', 'employee_name']
+        fields = ['__all__'],
+        fields = ['employee_name']
+# , 'employee_name'

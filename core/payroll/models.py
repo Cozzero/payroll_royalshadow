@@ -11,8 +11,14 @@ class payroll(models.Model):
     generated_on = models.DateTimeField(auto_now_add=True)
 
 
-class Meta:
-        unique_together = ['name','employee_id', 'amount', 'date']
-def __str__(self):
-        return f"Payroll for {self.user.username} -  {self.name} - {self.employee_id} - {self.month} - {self.amount}"
+# class Meta:
+#         unique_together = ['name','employee_id', 'amount', 'month']
+# def __str__(self):
+#        return f"{self.name} - {self.employee_id} - {self.amount} - {self.month}"
+#        #return f"{self.user.username} -  {self.name} - {self.employee_id} - {self.amount} on {self.month}"
 
+
+    class Meta:
+        unique_together = ['employee_id', 'amount', 'month', 'generated_on']
+    def __str__(self):
+        return f"{self.user.username} - {self.employee_id} - {self.amount} on {self.month} - {self.generated_on}"
