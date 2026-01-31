@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import payroll
 from .serializers import PayrollSerializer
 from rest_framework import viewsets
-
 class PayrollViewSet(viewsets.ModelViewSet):
     queryset = payroll.objects.select_related('employee').all()
     serializer_class = PayrollSerializer

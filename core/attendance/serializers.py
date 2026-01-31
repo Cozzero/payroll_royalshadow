@@ -7,4 +7,3 @@ class AttendanceRecordSerializer(serializers.ModelSerializer):
         model = AttendanceRecord
         fields = ['__all__'],
         fields = ['employee_name']
-# , 'employee_name'
