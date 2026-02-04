@@ -3,7 +3,7 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 from payroll.models import payroll
 from userprofile.models import userProfile
-from salary.models import SalaryRecord
+from salary.models import salaryRecord
 from attendance.models import AttendanceRecord
 
 
@@ -21,7 +21,7 @@ def update_attendance_record(sender, instance, created, **kwargs):
         instance.name = profile.name
         instance.employee_id = profile.employee_id
         instance.save()
-@receiver(post_save, sender=SalaryRecord)
+@receiver(post_save, sender=salaryRecord)
 def update_salary_record(sender, instance, created, **kwargs):
     if created:
         profile = userProfile.objects.get(user=instance.user)
