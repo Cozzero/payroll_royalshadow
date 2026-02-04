@@ -11,5 +11,33 @@
             "url": "http://127.0.0.1:8000/",
             "webRoot": "${workspaceFolder}"
         },
+        
+        {
+            "type": "msedge",
+            "request": "launch",
+            "name": "Launch Edge against localhost",
+            "url": "http://127.0.0.1:5174/",
+            "webRoot": "${workspaceFolder}"
+        }
     ]
 }
+
+
+// {
+//   "version": "0.2.0",
+//   "configurations": [
+//     {
+//       "name": "Node.js: Current File",
+//       "type": "node",
+//       "request": "launch",
+//       "program": "${workspaceFolder}/index.js",
+//       "args": ["--port", "8000"],
+//       "cwd": "${workspaceFolder}",
+//       "console": "integratedTerminal",
+//       "skipFiles": ["<node_internals>/**"]
+//     }
+//   ]
+// }
+// "env": {
+//   "NODE_ENV": "development"
+// }
