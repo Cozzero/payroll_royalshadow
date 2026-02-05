@@ -2,9 +2,9 @@
   "name": "nodeapp",
   "version": "1.0.0",
   "description": "",
-  "main": "app.jsx",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.jsx"
+    "dev": "node index.js"
   },
   "keywords": [],
   "author": "",
