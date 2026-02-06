@@ -13,6 +13,8 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('login/', TokenObtainPairView.as_view()),
+    # path('refresh/', TokenRefreshView.as_view()),
 #     path('api/', include('attendance.urls')),
 #     path('api/', include('salary.urls')),
 #     path('api/', include('payroll.urls')),
