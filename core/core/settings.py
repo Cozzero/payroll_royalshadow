@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.utils.timezone',
+    'core.apps.CoreConfig'
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
