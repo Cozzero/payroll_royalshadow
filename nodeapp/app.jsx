@@ -5,6 +5,9 @@ import AppHeader from './components/AppHeader';
 import AppFooter from './components/AppFooter';
 import MainContent from './components/MainContent';
 
+
+ReactDOM.render(<App />, document.getElementById('root'));
+<Route path="/login" element={<Login />} />
 const App = () => {
     return (
         <div className="app">
@@ -15,4 +18,11 @@ const App = () => {
     );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+<Route
+  path="/"
+  element={
+    <ProtectedRoute>
+      <Dashboard />
+    </ProtectedRoute>
+  }
+/>
